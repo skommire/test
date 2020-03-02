@@ -1,0 +1,341 @@
+﻿#%RAML 1.0
+#baseUri: https://mocksvc.mulesoft.com/mocks/da58b99c-fad9-42d9-872f-ddb18766c22a
+baseUri: psa-cust1st-salesforce-system-app.eu.cloudhub.io/api/{version}/
+title: PSA Salesforce System API
+version: v1
+description: to perform update operation on fleet request opportunity and on some quotes associated from PSA Legacy
+protocols: HTTP
+/fleetRequest:
+  post:
+    headers: 
+      X-Timestamp:
+        required: true
+        type: datetime-only
+        example: "2015-07-04T21:00:00"
+      ClientSecret:
+        required: true
+        type: string 
+    body: 
+      application/json:
+        schema: |
+          {
+            "$id": "http://example.com/example.json",
+            "type": "object",
+            "properties": {
+              "opportunity": {
+                "$id": "/properties/opportunity",
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "$id": "/properties/opportunity/properties/id",
+                    "type": "string",
+                    "examples": [
+                      "0015E00000ZVawjQAD"
+                    ],
+          		  "maxLength": 18,
+                    "minLength": 1
+                  },
+                  "accountId": {
+                    "$id": "/properties/opportunity/properties/accountId",
+                    "type": "string",
+                    "examples": [
+                      "0015E00000ZVawjQAD"
+                    ],
+          		  "maxLength": 18,
+                    "minLength": 1
+                  },
+                  "stage": {
+                    "$id": "/properties/opportunity/properties/stage",
+                    "type": "integer",
+                    "examples": [
+                      3
+                    ],
+          		  "maxLength": 3,
+                    "minLength": 1
+                  },
+                  "productionRequest": {
+                    "$id": "/properties/opportunity/properties/productionRequest",
+                    "type": "string",
+                    "examples": [
+                      "1"
+                    ],
+          		  "maxLength": 3,
+                    "minLength": 1
+                  },
+                  "approvedQuantity": {
+                    "$id": "/properties/opportunity/properties/approvedQuantity",
+                    "type": "number",
+                    "examples": [
+                      10
+                    ]
+                  },
+                  "bonusCalculated": {
+                    "$id": "/properties/opportunity/properties/bonusCalculated",
+                    "type": "boolean",
+                    "examples": [
+                      true
+                    ]
+                  },
+                  "acceptedBy": {
+                    "$id": "/properties/opportunity/properties/acceptedBy",
+                    "type": "string",
+                    "examples": [
+                      "E123456"
+                    ],
+          		  "maxLength": 20,
+                    "minLength": 1
+                  },
+                  "acceptedOn": {
+                    "$id": "/properties/opportunity/properties/acceptedOn",
+                    "type": "string",
+                    "examples": [
+                      "2018-02-23 02:37:34"
+                    ],
+                    "pattern": "\\d{4}-\\d{1,2}-\\d{1,2} \\d{1,2}:\\d{1,2}:\\d{1,2}"
+                  },
+                  "orderStartDate": {
+                    "$id": "/properties/opportunity/properties/orderStartDate",
+                    "type": "string",
+                    "examples": [
+                      "2018-02-23"
+                    ],
+                    "pattern": "\\d{4}-\\d{1,2}-\\d{1,2}"
+                  },
+                  "orderEndDate": {
+                    "$id": "/properties/opportunity/properties/orderEndDate",
+                    "type": "string",
+                    "examples": [
+                      "2018-02-23"
+                    ],
+                    "pattern": "\\d{4}-\\d{1,2}-\\d{1,2}"
+                  },
+                  "maxDeliveryDate": {
+                    "$id": "/properties/opportunity/properties/maxDeliveryDate",
+                    "type": "string",
+                    "examples": [
+                      "2018-02-23"
+                    ],
+                    "pattern": "\\d{4}-\\d{1,2}-\\d{1,2}"
+                  },
+                  "fundingForm": {
+                    "$id": "/properties/opportunity/properties/fundingForm",
+                    "type": "string",
+                    "examples": [
+                      "GOTÓWKA"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 30
+                  },
+                  "fundingCompany": {
+                    "$id": "/properties/opportunity/properties/fundingCompany",
+                    "type": "string",
+                    "examples": [
+                      "24"
+                    ],
+          		  "maxLength": 50,
+                    "minLength": 1
+                  },
+                  "fleetCategory": {
+                    "$id": "/properties/opportunity/properties/fleetCategory",
+                    "type": "integer",
+                    "examples": [
+                      13
+                    ],
+          		  "maxLength": 3,
+                    "minLength": 1
+                  },
+                  "segment": {
+                    "$id": "/properties/opportunity/properties/segment",
+                    "type": "string",
+                    "examples": [
+                      "P"
+                    ],
+          		  "maxLength": 3,
+                    "minLength": 1
+                  },
+                  "companyActivityType": {
+                    "$id": "/properties/opportunity/properties/companyActivityType",
+                    "type": "string",
+                    "examples": [
+                      "BRAK"
+                    ],
+                    "minLength": 1,
+                    "maxLength": 50
+                  },
+                  "comments": {
+                    "$id": "/properties/opportunity/properties/comments",
+                    "type": "string",
+                    "examples": [
+                      "comments"
+                    ],
+          		  "maxLength": 32000
+                  }
+                },
+                "required": [
+                  "id",
+                  "accountId",
+                  "stage",
+                  "productionRequest",
+                  "approvedQuantity",
+                  "bonusCalculated",
+                  "orderStartDate",
+                  "orderEndDate",
+                  "fundingForm",
+                  "fleetCategory",
+                  "segment",
+                  "companyActivityType"
+                ]
+              },
+              "account": {
+                "$id": "/properties/account",
+                "type": "object",
+                "properties": {
+                  "vnContractNumber": {
+                    "$id": "/properties/account/properties/vnContractNumber",
+                    "type": "string",
+                    "examples": [
+                      "4568791"
+                    ],
+          		  "maxLength": 7,
+                    "minLength": 1
+                  },
+                  "nonUniqueFiscalId": {
+                    "$id": "/properties/account/properties/nonUniqueFiscalId",
+                    "type": "string",
+                    "examples": [
+                      "314315424"
+                    ],
+          		  "maxLength": 20,
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "vnContractNumber",
+                  "nonUniqueFiscalId"
+                ]
+              },
+              "quote": {
+                "$id": "/properties/quote",
+                "type": "array",
+                "items": {
+                  "$id": "/properties/quote/items",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "$id": "/properties/quote/items/properties/id",
+                      "type": "string",
+                      "examples": [
+                        "0015E00000ZVawjQAD"
+                      ]
+                    },
+                    "subsidiaryPartPct": {
+                      "$id": "/properties/quote/items/properties/subsidiaryPartPct",
+                      "type": "number",
+                      "examples": [
+                        102.31999969482422
+                      ]
+                    },
+                    "dealerPartPct": {
+                      "$id": "/properties/quote/items/properties/dealerPartPct",
+                      "type": "number",
+                      "examples": [
+                        102.31999969482422
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                }
+              }          
+            }
+          }
+    responses: 
+      200:
+        description: OK
+        body:
+          application/json:
+            type: object
+            properties:
+              code:
+                description: SUCCESS
+                example: SUCCESS
+                type: string
+                required: false
+              message:
+                example: Record inserted successfully
+                type: string
+                required: false
+      400:
+        description: mandatory fields  missing
+        body:
+          application/json:
+            type: object
+            properties:
+              code:
+                description: 
+                  In case of known error contains error code. Error code `MANDATORY_FIELD_MISSING` - The mandatory fields <Field1>, <Field2>... are empty .\\n
+                example: MANDATORY_FIELD_MISSING
+                type: string
+                required: false
+              message:
+                example: {
+                "error": {
+                  "application": "psa-c1st-salesforce-system-api",
+                  "environment": "uat",
+                  "id": "d1839740-859a-11e8-9411-eefd20524153",
+                  "code": "400",
+                  "timestamp": "2018-07-12 11:44:22",
+                  "message": "BAD_REQUEST with missing fields <field1>, <field2>....",
+                  "description": "Bad Request",
+                  "system": "API"
+                    }
+                  }
+                type: object
+                required: false
+      401:
+        description: Unauthorised User
+        body:
+          application/json:
+            type: object
+            properties:
+              code:
+                description: SALESFORCE_VALIDATION_ERROR
+                example: VALIDATION_ERROR
+                type: string
+                required: false
+              message:
+                example: Unauthorised User
+                type: string
+                required: false
+      405:
+        description: Method not allowed for this URI
+        body:
+          application/json:
+            type: object
+            properties:
+              code:
+                description: METHOD_NOT_ALLOWED
+                example: METHOD_NOT_ALLOWED
+                type: string
+                required: false
+              message:
+                example: Method not allowed for this URI
+                type: string
+                required: false
+      500:
+        description: internal server error
+        body:
+          application/json:
+            type: object
+            properties:
+              code:
+                description: INTERNAL_ERROR
+                example: INTERNAL_ERROR
+                type: string
+                required: false
+              message:
+                example: An error has occurred and the request couldn’t be completed
+                type: string
+                required: false
+                    
